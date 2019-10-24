@@ -51,7 +51,8 @@
                   <div class="form-group">
                     <button class="btn btn-success submit-btn btn-block"> {{ __('Login') }}</button>
                   </div>
-                  <div class="form-group d-flex justify-content-between">
+
+                  <div class="form-group d-flex justify-content-between" style="display: none!important;">
                     <div class="form-check form-check-flat mt-0">
                       <label class="form-check-label">
 
