@@ -33,6 +33,7 @@
     </div><!-- container-scroller -->
 
     <!-- Scripts -->
+    @routes
     <script src="{{ asset('js/base.js') }}" defer></script>
     <script src="{{ asset('js/addons.js') }}" defer></script>
 

@@ -43,11 +43,11 @@ class MarcasController extends Controller
      * @param  \App\Marcas  $marcas
      * @return \Illuminate\Http\Response
      */
-    public function show(Marcas $marcas)
+    public function show($cat)
     {
         //filtra marcas por categoria
-
-        $marcas = Marcas::orderBy('marca','asc')
+        $marcas = Marcas::where('cat',$cat)
+            ->orderBy('marca','asc')
             ->get();
 
         return json_encode($marcas);

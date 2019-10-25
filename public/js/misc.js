@@ -80,4 +80,32 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
     $(".form-check label,.form-radio label").append('<i class="input-helper"></i>');
 
   });
+
+  // el babas was here
+
+  $('#marca').prop('disabled', 'disabled');
+
+
+  $(document).on('change', "#cat", function () {
+    var cat_id = $('#cat').val();
+
+      $.ajax({
+        type: "GET",
+        url: route('get.marcas', cat_id),
+          success: function (respuesta) {
+
+            $('#marca').empty().removeAttr('disabled');
+
+            $.each($.parseJSON(respuesta), function(idx, obj) {
+              $('#marca').append('<option value="'+obj.id+'">'+obj.marca+'</option>');
+            });
+
+          }
+       });
+ });
+
+
 })(jQuery);
+
+
+
