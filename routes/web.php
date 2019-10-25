@@ -21,4 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/valuacion-express', 'ValuacionesController@index')->name('express');
 
-Route::get('/get-marcas/{cat}', 'MarcasController@index')->name('get.marcas');
+Route::get('/get-marcas/{cat}', 'MarcasController@show')->name('get.marcas');

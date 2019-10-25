@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Marcas;
 use Illuminate\Http\Request;
-
 class MarcasController extends Controller
 {
     /**
@@ -46,7 +45,12 @@ class MarcasController extends Controller
      */
     public function show(Marcas $marcas)
     {
-        //
+        //filtra marcas por categoria
+
+        $marcas = Marcas::orderBy('marca','asc')
+            ->get();
+
+        return json_encode($marcas);
     }
 
     /**

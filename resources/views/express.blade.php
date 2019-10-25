@@ -31,9 +31,11 @@
             			<div class="form-group">
 				            <label class="label font-weight-bold">Categoria</label>
 				                <div class="input-group">
-				                    <select name="cat" id="cat" class="text-capitalize" on> 
+				                    <select name="cat" id="cat" class="text-capitalize"> 
 				                        @foreach($categorias as $cat)
-				                            <option value="{{$cat->id}}" >{{$cat->categoria}}</option>
+				                            <option value="{{$cat->id}}" >
+				                            	{{$cat->categoria}}
+				                            </option>
 				                        @endforeach
 				                    </select>
 				                </div>
@@ -43,10 +45,8 @@
             			<div class="form-group">
 				            <label class="label font-weight-bold">Marca</label>
 				                <div class="input-group">
-				                    <select name="cat" id="cat" class="text-capitalize"> 
-				                        @foreach($categorias as $cat)
-				                            <option value="{{$cat->id}}">{{$cat->categoria}}</option>
-				                        @endforeach
+				                    <select name="marca" id="marca" class="text-capitalize" style="visibility: hidden;"> 
+				                        
 				                    </select>
 				                </div>
 				        </div>
