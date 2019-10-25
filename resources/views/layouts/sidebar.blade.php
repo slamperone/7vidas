@@ -36,18 +36,12 @@
                     <a class="nav-link" href="#">Histórico</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Nueva</a>
+                    <a class="nav-link" href="{{ route('express') }}">Nueva</a>
                   </li>
                 </ul>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="menu-icon typcn typcn-shopping-bag"></i>
-                <span class="menu-title">Valuar</span>
-              </a>
-            </li>
-           
+
           </ul>
         </nav>
         <!-- partial -->

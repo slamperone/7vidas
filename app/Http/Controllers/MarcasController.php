@@ -2,22 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Marcas;
 use Illuminate\Http\Request;
-use App\Categorias;
 
-class ValuacionesController extends Controller
+class MarcasController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -25,12 +14,7 @@ class ValuacionesController extends Controller
      */
     public function index()
     {
-        //lanza plantilla para nueva valuacion express
-
-        $categorias = Categorias::orderBy('categoria','asc')
-            ->get();
-
-        return view('express', compact('categorias'));
+        //
     }
 
     /**
@@ -57,10 +41,10 @@ class ValuacionesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Marcas  $marcas
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Marcas $marcas)
     {
         //
     }
@@ -68,10 +52,10 @@ class ValuacionesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Marcas  $marcas
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Marcas $marcas)
     {
         //
     }
@@ -80,10 +64,10 @@ class ValuacionesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Marcas  $marcas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Marcas $marcas)
     {
         //
     }
@@ -91,10 +75,10 @@ class ValuacionesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Marcas  $marcas
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Marcas $marcas)
     {
         //
     }
