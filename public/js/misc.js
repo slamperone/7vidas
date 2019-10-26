@@ -84,9 +84,33 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
   // el babas was here
 
   $('#marca').prop('disabled', 'disabled');
+  $('#subcat').prop('disabled', 'disabled');
 
 
   $(document).on('change', "#cat", function () {
+    var cat_id = $('#cat').val();
+
+      $.ajax({
+        type: "GET",
+        url: route('get.subs', cat_id),
+          success: function (respuesta) {
+
+            $('#subcat').empty().removeAttr('disabled');
+            $('#subcat').append('<option value="">...</option>');
+
+            $('#marca').prop('disabled', 'disabled');
+            $('#marca').empty().append('<option value="">...</option>');
+
+            $.each($.parseJSON(respuesta), function(idx, obj) {
+              $('#subcat').append('<option value="'+obj.id_cat+'">'+obj.nombre+'</option>');
+            });
+
+          }
+       });
+ });
+
+
+    $(document).on('change', "#subcat", function () {
     var cat_id = $('#cat').val();
 
       $.ajax({
@@ -95,6 +119,9 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
           success: function (respuesta) {
 
             $('#marca').empty().removeAttr('disabled');
+            $('#marca').append('<option value="">...</option>');
+
+            console.log(respuesta);
 
             $.each($.parseJSON(respuesta), function(idx, obj) {
               $('#marca').append('<option value="'+obj.id+'">'+obj.marca+'</option>');

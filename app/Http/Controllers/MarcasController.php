@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Marcas;
 use Illuminate\Http\Request;
+use App\Marcas;
+use App\Subcategorias;
+
+
+
 class MarcasController extends Controller
 {
     /**
@@ -44,13 +48,29 @@ class MarcasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($cat)
-    {
+    {   
+
         //filtra marcas por categoria
         $marcas = Marcas::where('cat',$cat)
             ->orderBy('marca','asc')
             ->get();
 
         return json_encode($marcas);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Marcas  $marcas
+     * @return \Illuminate\Http\Response
+     */
+    public function showSub($cat)
+    {   
+        $subcats = Subcategorias::where('id_cat',$cat)
+            ->orderBy('nombre','asc')
+            ->get();
+
+        return json_encode($subcats);
     }
 
     /**

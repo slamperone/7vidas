@@ -27,7 +27,7 @@
 
             	<div class="row my-4"> <!-- fila uno campos-->
 
-            		<div class="col-6">
+            		<div class="col-4">
             			<div class="form-group">
 				            <label class="label font-weight-bold">Categoria</label>
 				                <div class="input-group">
@@ -42,7 +42,18 @@
 				                </div>
 				        </div>
             		</div>
-            		<div class="col-6">
+            		<div class="col-4">
+            			<div class="form-group">
+				            <label class="label font-weight-bold">Subcategoria</label>
+				                <div class="input-group">
+				                    <select name="subcat" id="subcat" class="text-capitalize form-control form-control-lg">
+				                    	<option value="">...</option> 
+				                        
+				                    </select>
+				                </div>
+				        </div>
+            		</div>
+            		<div class="col-4">
             			<div class="form-group">
 				            <label class="label font-weight-bold">Marca</label>
 				                <div class="input-group">
