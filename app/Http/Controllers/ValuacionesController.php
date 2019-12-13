@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Categorias;
+use App\Referencias;
 
 class ValuacionesController extends Controller
 {
@@ -28,6 +29,18 @@ class ValuacionesController extends Controller
         //lanza plantilla para nueva valuacion express
 
         $categorias = Categorias::orderBy('categoria','asc')
+            ->get();
+
+        //$this->mediana($valores);    
+
+        return view('express', compact('categorias'));
+    }
+
+    public function step2($cat,$edo)
+    {
+        //lanza plantilla para nueva valuacion express
+
+        $ref = Referencias::orderBy('categoria','asc')
             ->get();
 
         return view('express', compact('categorias'));
@@ -98,4 +111,32 @@ class ValuacionesController extends Controller
     {
         //
     }
+
+
+    /**
+    Calcula la mediana estadistica
+    **/
+
+    function mediana($arr) {
+        
+        sort($arr);
+
+        $cuantos = count($arr);
+
+        $central = floor(($cuantos-1)/2);
+
+        if($cuantos % 2) {
+
+            $mediana = $arr[$central];
+
+            }else{
+
+            
+            $arriba = $arr[$central+1];
+
+            $mediana = (($arriba+$central)/2);
+        }
+
+        return $median;
+    } 
 }
