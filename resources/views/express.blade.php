@@ -21,9 +21,22 @@
 
             	<div class="row">
             		<h3 class="font-weight-semibold">Valuar producto</h3> <hr />
+
+					@if ($errors->any())
+					    <div class="alert alert-danger">
+					        <ul>
+					            @foreach ($errors->all() as $error)
+					                <li>{{ $error }}</li>
+					            @endforeach
+					        </ul>
+					    </div>
+					@endif
+
+
             	</div>
 
-
+<form method="POST" action="{{ route('express2') }}">
+                        @csrf
 
             	<div class="row my-4"> <!-- fila uno campos-->
 
@@ -31,7 +44,7 @@
             			<div class="form-group">
 				            <label class="label font-weight-bold">Categoria</label>
 				                <div class="input-group">
-				            		<select name="cat" id="cat" class="text-capitalize form-control form-control-lg">
+				            		<select name="cat" id="cat" class="text-capitalize form-control form-control-lg" required="required">
 				                    	<option value="">...</option>
 				                        @foreach($categorias as $cat)
 				                            <option value="{{$cat->id}}" >
@@ -46,7 +59,7 @@
             			<div class="form-group">
 				            <label class="label font-weight-bold">Subcategoria</label>
 				                <div class="input-group">
-				                    <select name="subcat" id="subcat" class="text-capitalize form-control form-control-lg">
+				                    <select name="subcat" id="subcat" class="text-capitalize form-control form-control-lg" required="required">
 				                    	<option value="">...</option> 
 				                        
 				                    </select>
@@ -57,7 +70,7 @@
             			<div class="form-group">
 				            <label class="label font-weight-bold">Marca</label>
 				                <div class="input-group">
-				                    <select name="marca" id="marca" class="text-capitalize form-control form-control-lg">
+				                    <select name="marca" id="marca" class="text-capitalize form-control form-control-lg" required="required">
 				                    	<option value="">...</option> 
 				                        
 				                    </select>
@@ -74,7 +87,7 @@
             			<div class="form-group">
 				            <label class="label font-weight-bold">Modelo</label>
 				                <div class="input-group">
-				                	<input type="text" name="modelo" id="modelo" class="form-control">
+				                	<input type="text" name="modelo" id="modelo" class="form-control" required="required">
 				                </div>
 				        </div>
             		</div>
@@ -82,7 +95,7 @@
             			<div class="form-group">
 				            <label class="label font-weight-bold">Versión</label>
 				                <div class="input-group">
-				                	<input type="text" name="version" id="version" class="form-control">
+				                	<input type="text" name="version" id="version" class="form-control" required="required">
 				                </div>
 				        </div>
             		</div>
@@ -93,7 +106,7 @@
             	<div class="row mb-4"> <!-- fila tres campos-->
             		<div class="col-6">
             			 <label class="label font-weight-bold">Año de manufactura</label>
-            			<select name="ano" id="ano" class="form-control form-control-lg">
+            			<select name="ano" id="ano" class="form-control form-control-lg" required="required">
             				<option value="">...</option>
             				@for ($i = 0; $i < 3; $i++)
 							    <option value="">{{date('Y') -$i}}</option>
@@ -102,7 +115,7 @@
             		</div>
             		<div class="col-6">
             			 <label class="label font-weight-bold">Estado del producto</label>
-            			<select name="estado" id="estado" class="form-control form-control-lg">
+            			<select name="estado" id="estado" class="form-control form-control-lg" required="required">
             				<option value="">...</option>
             				<option value="0">Bueno</option>
             				<option value="1">Regular</option>
@@ -121,7 +134,7 @@
 	            			<div class="col-md-3 col-sm-6">
 	            				<div class="form-radio">
 	                              <label class="form-check-label">
-	                                <input type="radio" class="form-check-input" name="condicion" id="condicion1" value="nuevo" checked=""> Nuevo 
+	                                <input type="radio" class="form-check-input" name="nuevo" id="condicion1" value="1" checked="" > Nuevo 
 	                                <i class="input-helper"></i></label>
 	                            </div>
 	            			</div>
@@ -130,7 +143,7 @@
 	            			<div class="col-6">
 	            				<div class="form-radio">
 	                              <label class="form-check-label">
-	                                <input type="radio" class="form-check-input" name="condicion" id="condicion2" value="usado"> Usado <i class="input-helper"></i></label>
+	                                <input type="radio" class="form-check-input" name="nuevo" id="condicion2" value="0"> Usado <i class="input-helper"></i></label>
 	                            </div>
 	            			</div>
             			</div>
@@ -146,12 +159,14 @@
 
             	<div class="row justify-content-end"> <!-- fila botones-->
             		<div class="col-3">
-            			<a type="button" class="btn btn-outline-secondary" href="{{ route('home') }}">Cancelar</a>
-            			<a type="button" class="btn btn-success" href="{{ route('express2') }}">Continuar</a>
+            			<input type="button" class="btn btn-outline-secondary" value="Cancelar">
+
+            			<input type="submit" class="btn btn-success" value="Continuar" />
+
             		</div>
             	</div>
 
-
+</form>
 
 
             </div>

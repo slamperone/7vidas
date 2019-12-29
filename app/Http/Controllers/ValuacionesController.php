@@ -36,14 +36,15 @@ class ValuacionesController extends Controller
         return view('express', compact('categorias'));
     }
 
-    public function step2($cat,$edo)
+    public function step2()
     {
         //lanza plantilla para nueva valuacion express
 
-        $ref = Referencias::orderBy('categoria','asc')
-            ->get();
 
-        return view('express', compact('categorias'));
+
+
+
+        return view('express2', compact('referencias'));
     }
 
     /**
