@@ -33,7 +33,7 @@
                     <a class="nav-link" href="#">Pendientes</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Histórico</a>
+                    <a class="nav-link" href="{{ route('historia') }}">Histórico</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('express') }}">Nueva</a>

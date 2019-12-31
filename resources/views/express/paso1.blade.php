@@ -117,9 +117,9 @@
             			 <label class="label font-weight-bold">Estado del producto</label>
             			<select name="estado" id="estado" class="form-control form-control-lg" required="required">
             				<option value="">...</option>
-            				<option value="0">Bueno</option>
-            				<option value="1">Regular</option>
-            				<option value="2">Malo</option>
+            				<option value="1">Bueno</option>
+            				<option value="2">Regular</option>
+            				<option value="3">Malo</option>
             			</select>
             		</div>
             	</div><!-- cierra fila tres -->
@@ -153,6 +153,7 @@
 
             	<div class="row">
                         <input type="hidden" value="1" name="etapa">
+                        <input type="hidden" value="{{auth()->id()}}" name="valuador">
             		<div class="col-12"><hr /></div>
             	</div>
 

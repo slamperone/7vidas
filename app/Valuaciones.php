@@ -8,6 +8,7 @@ class Valuaciones extends Model
 {
     //
     protected $fillable = [
+        'id',
     	'categoria',
         'subcategoria',
         'marca',
@@ -18,6 +19,7 @@ class Valuaciones extends Model
         'nuevo',
         'valor',
         'etapa',
+        'valuador'
 
     ];
 }

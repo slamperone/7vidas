@@ -36,7 +36,7 @@ class ValuacionesController extends Controller
 
         //$this->mediana($valores);    
 
-        return view('express', compact('categorias'));
+        return view('express.paso1', compact('categorias'));
     }
 
     public function step2(Request $request)
@@ -52,7 +52,8 @@ class ValuacionesController extends Controller
             'ano',
             'estado',
             'nuevo',
-            'etapa'
+            'etapa',
+            'valuador'
         ]);
 
         if ($validator->fails()) {
@@ -71,7 +72,7 @@ class ValuacionesController extends Controller
 
 
 
-        return view('express2', compact('id_val','refs'));
+        return view('express.paso2', compact('id_val','refs'));
     }
 
     /**
@@ -104,6 +105,19 @@ class ValuacionesController extends Controller
     public function show($id)
     {
         //
+
+        $val = Valuaciones::where('id', (int)$id)->get();
+
+       //echo $val[0]->categoria;
+
+        $proveedores = Referencias::where('cat_id',$val[0]->categoria)  
+                    ->get();
+
+        $refs = $proveedores;
+
+
+
+        return view('express.paso2', compact('val','refs'));
     }
 
     /**
@@ -138,6 +152,19 @@ class ValuacionesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * Busca y muestra la data de las valuaciones hechas en el pasado
+     *
+     * 
+     */
+    public function historia()
+    {
+       
+        $valuaciones = Valuaciones::latest()->paginate(10);
+        return view('express.historia', compact('valuaciones'));   
     }
 
 
