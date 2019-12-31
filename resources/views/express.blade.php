@@ -44,7 +44,7 @@
             			<div class="form-group">
 				            <label class="label font-weight-bold">Categoria</label>
 				                <div class="input-group">
-				            		<select name="cat" id="cat" class="text-capitalize form-control form-control-lg" required="required">
+				            		<select name="categoria" id="cat" class="text-capitalize form-control form-control-lg" required="required">
 				                    	<option value="">...</option>
 				                        @foreach($categorias as $cat)
 				                            <option value="{{$cat->id}}" >
@@ -59,7 +59,7 @@
             			<div class="form-group">
 				            <label class="label font-weight-bold">Subcategoria</label>
 				                <div class="input-group">
-				                    <select name="subcat" id="subcat" class="text-capitalize form-control form-control-lg" required="required">
+				                    <select name="subcategoria" id="subcat" class="text-capitalize form-control form-control-lg" required="required">
 				                    	<option value="">...</option> 
 				                        
 				                    </select>
@@ -109,7 +109,7 @@
             			<select name="ano" id="ano" class="form-control form-control-lg" required="required">
             				<option value="">...</option>
             				@for ($i = 0; $i < 3; $i++)
-							    <option value="">{{date('Y') -$i}}</option>
+							    <option value="{{date('Y') -$i}}">{{date('Y') -$i}}</option>
 							@endfor
             			</select>
             		</div>
@@ -152,13 +152,14 @@
 
 
             	<div class="row">
+                        <input type="hidden" value="1" name="etapa">
             		<div class="col-12"><hr /></div>
             	</div>
 
 
 
             	<div class="row justify-content-end"> <!-- fila botones-->
-            		<div class="col-3">
+            		<div class="col-4">
             			<input type="button" class="btn btn-outline-secondary" value="Cancelar">
 
             			<input type="submit" class="btn btn-success" value="Continuar" />

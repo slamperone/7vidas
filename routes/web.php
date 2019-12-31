@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/valuacion-express', 'ValuacionesController@index')->name('express');
 
-Route::get('/valuacion-express-step-2', 'ValuacionesController@step2')->name('express2');
+Route::post('/valuacion-express-step-2', 'ValuacionesController@step2')->name('express2');
 
 Route::get('/valuacion-express-step-3', function () {
     return view('express3');

@@ -24,23 +24,18 @@
             	</div>
 
 
-
             	<div class="row my-4"> <!-- fila uno campos-->
 
-            		<div class="col-4">
-            			<div class="form-group">
-				            <label class="label font-weight-bold">Categoria</label>
-				                <div class="input-group">
-				            		<select name="cat" id="cat" class="text-capitalize form-control form-control-lg">
-				                    	<option value="">...</option>
-				                        @foreach($referencias as $cat)
-				                            <option value="{{$cat->id}}" >
-				                            	{{$cat->categoria}}
-				                            </option>
-				                        @endforeach
-				                    </select>
-				                </div>
-				        </div>
+            		<div class="col-12">
+				  <label class="label font-weight-bold">Proveedores autorizados</label>
+
+
+                          @foreach($refs as $proveedor)
+                              <div id="ref " value="{{$proveedor->url}}" >
+                              {{$proveedor->nombre}}
+                              </div>
+                              @endforeach
+				               
             		</div>
             		
 

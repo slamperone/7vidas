@@ -102,7 +102,7 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
             $('#marca').empty().append('<option value="">...</option>');
 
             $.each($.parseJSON(respuesta), function(idx, obj) {
-              $('#subcat').append('<option value="'+obj.id_cat+'">'+obj.nombre+'</option>');
+              $('#subcat').append('<option value="'+obj.id+'">'+obj.nombre+'</option>');
             });
 
           }

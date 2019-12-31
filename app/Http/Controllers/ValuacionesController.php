@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Categorias;
 use App\Referencias;
+use App\Valuaciones;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class ValuacionesController extends Controller
 {
@@ -36,15 +39,39 @@ class ValuacionesController extends Controller
         return view('express', compact('categorias'));
     }
 
-    public function step2()
+    public function step2(Request $request)
     {
-        //lanza plantilla para nueva valuacion express
+        //valido los fields
+
+        $validator = Validator::make($request->all(),[
+            'categoria',
+            'subcategoria',
+            'marca',
+            'modelo',
+            'version',
+            'ano',
+            'estado',
+            'nuevo',
+            'etapa'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('valuacion-express')
+                        ->withErrors($validator)
+                        ->withInput();
+        }else{
+            $registro = Valuaciones::create($request->all());
+        }
+
+        $proveedores = Referencias::where('cat_id',$request->categoria)
+                        ->get();
+
+        $id_val = $registro->id;
+        $refs = $proveedores;
 
 
 
-
-
-        return view('express2', compact('referencias'));
+        return view('express2', compact('id_val','refs'));
     }
 
     /**
