@@ -22,19 +22,33 @@
             	<div class="row">
             		<h3 class="font-weight-semibold">Proveedores de referencia</h3> <hr />
             	</div>
+              <div class="row">
+                <h4 class="card-title mb-0"><i>Estas buscando: </i>{{$val[0]->marca}} {{$val[0]->modelo}} {{$val[0]->version}}</h4>
+              </div>
 
             	<div class="row my-4"> <!-- fila uno campos-->
 
             		<div class="col-12">
-<table>
+<table width="90%">
+  <tr>
+    <th>Tienda</th>
+    <th></th>
+    <th>Precio encontrado</th>
+  </tr>
                     @foreach($refs as $proveedor)
-                          <tr>
-                            <td>
+                          <tr id="contieneProov{{$proveedor->id}}">
+                            <td width="40%">
                               {{$proveedor->nombre}}
                             </td>
-                            <td>
 
-                               <button type="button"  class="btn btn-success btn-fw" 
+                            
+
+                            <td width="30%">
+
+                               <button 
+                               type="button"  
+                               class="btn btn-success btn-fw" 
+                               id="proov{{$proveedor->id}}"
                               onclick="
                               window.open('{{$proveedor->url}}', '_blank', 'toolbar=no, scrollbars=yes, resizable=yes, top=500,left=500,width=800, height=800')">Visitar</button>
 
@@ -42,6 +56,12 @@
                               onclick="getElementById('marco').src ='{{$proveedor->url}}'" 
                               data-toggle="modal"  data-target="#myModal">Visitar</button-->
                             </td>
+
+                            <td width="30%">
+                              <input type="text" placeholder="$0.00" name="precio{{$proveedor->id}}">
+                            </td>
+
+                            
                           </tr>
                     @endforeach
 				               

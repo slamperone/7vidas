@@ -106,7 +106,13 @@ class ValuacionesController extends Controller
     {
         //
 
-        $val = Valuaciones::where('id', (int)$id)->get();
+
+
+        $val = \DB::table('valuaciones as va')
+        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
+        ->select('va.id','va.modelo','va.categoria','va.version','ma.marca')
+        ->where('va.id', (int)$id)
+        ->paginate(15);
 
        //echo $val[0]->categoria;
 
@@ -163,7 +169,13 @@ class ValuacionesController extends Controller
     public function historia()
     {
        
-        $valuaciones = Valuaciones::latest()->paginate(10);
+        $valuaciones = \DB::table('valuaciones as va')
+        ->join('categorias as ca', 'va.categoria', '=', 'ca.id')
+        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
+        ->join('users as us', 'va.valuador', '=', 'us.id')
+        ->select('va.id','va.modelo','va.etapa','va.created_at','ca.categoria','ma.marca','us.name')
+        ->latest()
+        ->paginate(15);
         return view('express.historia', compact('valuaciones'));   
     }
 

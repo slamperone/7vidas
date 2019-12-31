@@ -14,14 +14,14 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Registro de valuaciones</h4>
+                    <h3 class="font-weight-semibold">Registro de valuaciones</h3>
                     <table class="table table-striped">
                       <thead>
                         <tr>
                           <th> Consecutivo </th>
                           <th> Categoria </th>
                           <th> Marca </th>
-                          <th> Estado </th>
+                          <th> Etapa </th>
                           <th> Valuador </th>
                           <th> Fecha </th>
                           <th> Continuar </th>
@@ -38,7 +38,7 @@
 
                               <td>{{$val->etapa}}</td>
 
-                              <td>{{$val->valuador}}</td>
+                              <td>{{$val->name}}</td>
 
                               <td>{{date('d/m/Y h:s',strtotime($val->created_at))}}</td>
 
