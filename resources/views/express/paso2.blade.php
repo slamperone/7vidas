@@ -36,33 +36,60 @@
     <th>Precio encontrado</th>
   </tr>
                     @foreach($refs as $proveedor)
-                          <tr id="contieneProov{{$proveedor->id}}">
-                            <td width="40%">
+                    
+                          <tr>
+
+                            <td>
+                              <div id="contieneProov{{$proveedor->id}}">
                               {{$proveedor->nombre}}
+                              </div>
                             </td>
 
-                            
+                            <td>
 
-                            <td width="30%">
+                              <?php
+
+                              $valor = array(
+                                $val[0]->marca,
+                                $val[0]->modelo,
+                                $val[0]->version,
+                                '"'
+                              );
+
+                              $pat = array(
+                                '%%mca%%',
+                                '%%mdl%%',
+                                '%%vrs%%',
+                                "'"
+                              );
+
+                               ?>
 
                                <button 
                                type="button"  
                                class="btn btn-success btn-fw" 
                                id="proov{{$proveedor->id}}"
                               onclick="
-                              window.open('{{$proveedor->url}}', '_blank', 'toolbar=no, scrollbars=yes, resizable=yes, top=500,left=500,width=800, height=800')">Visitar</button>
+                              window.open('<?= e(str_replace($pat, $valor, $proveedor->url)) ?>', '_blank', 'toolbar=no, scrollbars=yes, resizable=yes, top=500,left=500,width=800, height=800')
+
+                              /*getElementById('contieneProov{{$proveedor->id}}')
+                              .style.padding= '20px 0';
+
+                              getElementById('contieneProov{{$proveedor->id}}')
+                              .style.background= 'orange';*/
+
+                              ">Visitar</button>
 
                               <!--button type="button"  class="btn btn-success btn-fw" 
                               onclick="getElementById('marco').src ='{{$proveedor->url}}'" 
                               data-toggle="modal"  data-target="#myModal">Visitar</button-->
                             </td>
 
-                            <td width="30%">
+                            <td>
                               <input type="text" placeholder="$0.00" name="precio{{$proveedor->id}}">
                             </td>
-
-                            
                           </tr>
+                        
                     @endforeach
 				               
  </table>           		
