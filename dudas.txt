@@ -1,0 +1,50 @@
+Las sub categorias guitarras y teclados dice experto 
+bku ray no presente en tabla de avaluo (se puso Electrodomésticos menor)
+amplificadoro no presente en tabla de avaluo
+cat ampli (a que tipo de ampli se refiere)
+
+el porcentaje de nuevo es .7 ¿cual es el del usados?
+
+
+requerimos tabla de factores
+
+
+definir marcas por sub categoria
+
+
+/////******. reunion 26-10-19 
+
+empeño tradicional prsta hasta resultado de la valuacion 
+empeño plus presta avaluo + 10%
+compra avaluo + 15%
+
+
+operario debe capturar lo montos a ofrecer en los tres productos 
+
+debe indicar monto de refrendo y fechas 
+
+
+los empeños express ya estarán disponibles `para terninarlo durante un día habil
+
+niveles de usurio
+
+admin
+encargado
+valuador 
+consulta
+
+prodcutos usados
+
+boton nuevo:
+no hay informacion me paginas de nuevos 
+
+
+modal con confirmacion de no enctrado en sitio de nuevo con metodo para certificar
+por valuador y encarghado 
+
+
+En precio s de refencia se necesitan forzosamente 4, si son menos requiere autorizacion de encaragdo
+
+en pagina de detalle especificar paginas usadas de referencia 
+
+******//////
