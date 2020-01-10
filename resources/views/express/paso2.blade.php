@@ -53,14 +53,12 @@
                                 $val[0]->marca,
                                 $val[0]->modelo,
                                 $val[0]->version,
-                                '"'
                               );
 
                               $pat = array(
                                 '%%mca%%',
                                 '%%mdl%%',
                                 '%%vrs%%',
-                                "'"
                               );
 
                                ?>

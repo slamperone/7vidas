@@ -67,12 +67,18 @@ class ValuacionesController extends Controller
         $proveedores = Referencias::where('cat_id',$request->categoria)
                         ->get();
 
-        $id_val = $registro->id;
+        $id = $registro->id;
+
+        $val = \DB::table('valuaciones as va')
+        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
+        ->select('va.id','va.modelo','va.categoria','va.version','ma.marca')
+        ->where('va.id', (int)$id)
+        ->paginate(15);
         $refs = $proveedores;
 
 
 
-        return view('express.paso2', compact('id_val','refs'));
+        return view('express.paso2', compact('val','refs'));
     }
 
     /**
