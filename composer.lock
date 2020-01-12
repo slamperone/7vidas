@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c28b6f57b46abf4d515a380bcb939d28",
+    "content-hash": "36b969f3651118c9a5555a60edd30087",
     "packages": [
         {
             "name": "caouecs/laravel-lang",
@@ -48,6 +48,48 @@
                 "lpm"
             ],
             "time": "2019-03-17T10:36:46+00:00"
+        },
+        {
+            "name": "components/jquery",
+            "version": "3.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/jquery.git",
+                "reference": "901828b7968b18319e377dc23d466f28426ee083"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/jquery/zipball/901828b7968b18319e377dc23d466f28426ee083",
+                "reference": "901828b7968b18319e377dc23d466f28426ee083",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "jquery.js"
+                    ],
+                    "files": [
+                        "jquery.min.js",
+                        "jquery.min.map",
+                        "jquery.slim.js",
+                        "jquery.slim.min.js",
+                        "jquery.slim.min.map"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "JS Foundation and other contributors"
+                }
+            ],
+            "description": "jQuery JavaScript Library",
+            "homepage": "http://jquery.com",
+            "time": "2019-10-23T05:15:13+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -419,6 +461,67 @@
                 "trusted proxy"
             ],
             "time": "2019-12-20T13:11:11+00:00"
+        },
+        {
+            "name": "huebs/parsleyjs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/huebs/Parsley.js.git",
+                "reference": "68055d3b7c8bfc4c80c11073750905181d5695ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/huebs/Parsley.js/zipball/68055d3b7c8bfc4c80c11073750905181d5695ab",
+                "reference": "68055d3b7c8bfc4c80c11073750905181d5695ab",
+                "shasum": ""
+            },
+            "require": {
+                "components/jquery": ">=1.8"
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "main": "dist/parsley.js",
+                    "scripts": [
+                        "dist/parsley.js",
+                        "dist/parsley.remote.js"
+                    ],
+                    "files": [
+                        "dist/parsley.js",
+                        "dist/parsley.min.js",
+                        "dist/parsley.remote.min.js",
+                        "dist/parsley.remote.js"
+                    ],
+                    "shim": {
+                        "deps": [
+                            "jquery"
+                        ],
+                        "exports": "Parsley"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guillaume Potier",
+                    "email": "guillaume@wisembly.com",
+                    "homepage": "http://guillaumepotier.com/"
+                }
+            ],
+            "description": "Validate your forms, frontend, without writing a single line of javascript!",
+            "homepage": "http://parsleyjs.org",
+            "keywords": [
+                "HTML5",
+                "form",
+                "parsley",
+                "polyfill",
+                "validation"
+            ],
+            "time": "2014-12-06T03:17:09+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -4820,7 +4923,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "huebs/parsleyjs": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

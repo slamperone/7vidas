@@ -29,6 +29,8 @@
             	<div class="row my-4"> <!-- fila uno campos-->
 
             		<div class="col-12">
+      <form method="POST" action="{{ route('express3') }}" id="formStep3" data-parsley-validate>
+                        @csrf
 <table width="90%">
   <tr>
     <th>Tienda</th>
@@ -89,7 +91,8 @@
                         
                     @endforeach
 				               
- </table>           		
+ </table>
+ </form>   		
             	</div><!-- cierra fila uno campos-->
 
                 
