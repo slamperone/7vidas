@@ -40,9 +40,9 @@
     <script src="{{ asset('js/addons.js') }}" defer></script>
 
     <script src="{{ asset('js/off-canvas.js') }}" defer></script>
-    <script src="{{ asset('js/misc.js') }}" defer></script>
     <script src="{{ asset('js/parsley.js') }}" defer></script>
     <script src="{{ asset('js/i18n/es.js') }}" defer></script>
+    <script src="{{ asset('js/misc.js') }}" defer></script>
 
   </body>
 </html>    

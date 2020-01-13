@@ -109,6 +109,28 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
        });
  });
 
+$(document).on('change', ".paraPrecios", function () {
+
+  var val_temp = $(this).val();
+
+  console.log(!isNaN(val_temp));
+
+  if ( !isNaN(val_temp) ) {
+
+    $('#cuantos').val(parseInt($("#cuantos").val())+1);
+
+    console.log($('#cuantos').val());
+  }
+
+
+});
+
+$("#formStep2").parsley({
+    excluded: 'input[type=button], input[type=submit], input[type=reset]',
+    inputs: 'input, textarea, select, input[type=hidden], :hidden',
+});
+    
+
 })(jQuery);
 
 

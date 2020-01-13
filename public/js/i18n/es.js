@@ -7,15 +7,15 @@ Parsley.addMessages('es', {
   type: {
     email:        "Este valor debe ser un correo válido.",
     url:          "Este valor debe ser una URL válida.",
-    number:       "Este valor debe ser un número válido.",
-    integer:      "Este valor debe ser un número válido.",
+    number:       "Eso no parece un número.",
+    integer:      "Solo admite números enteros",
     digits:       "Este valor debe ser un dígito válido.",
     alphanum:     "Este valor debe ser alfanumérico."
   },
   notblank:       "Este valor no debe estar en blanco.",
   required:       "Este valor es obligatorio.",
   pattern:        "Este valor es incorrecto.",
-  min:            "Este valor no debe ser menor que %s.",
+  min:            "No recibas objetos que valgan menos de %s.",
   max:            "Este valor no debe ser mayor que %s.",
   range:          "Este valor debe estar entre %s y %s.",
   minlength:      "Este valor es muy corto. La longitud mínima es de %s caracteres.",

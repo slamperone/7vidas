@@ -20,7 +20,8 @@
             <div class="card-body">
 
             	<div class="row">
-            		<h3 class="font-weight-semibold">Proveedores de referencia</h3> <hr />
+            		<h3 class="font-weight-semibold">Proveedores de referencia</h3>
+                <hr />
             	</div>
               <div class="row">
                 <h4 class="card-title mb-0"><i>Estas buscando: </i>{{$val[0]->marca}} {{$val[0]->modelo}} {{$val[0]->version}}</h4>
@@ -29,8 +30,27 @@
             	<div class="row my-4"> <!-- fila uno campos-->
 
             		<div class="col-12">
-  <form method="POST" action="{{ route('express3') }}" id="formStep2" data-parsley-validate >
+  <form method="POST" action="{{ route('express3') }}" id="formStep2">
                         @csrf
+
+                        <div class="row">
+                          <div class="col-12">
+                            <input 
+                              type="hidden" 
+                              value="0" 
+                              name="cuantos" 
+                              id="cuantos" 
+                              min="2"
+                              data-parsley-validation-threshold="1" 
+                              data-parsley-trigger="keyup"
+                              data-parsley-error-message="Recuerda que debes llenar por lo menos 2 campos de precio" 
+                              data-parsley-type="number"
+                              required>
+                          </div>
+
+                          <h3 class="msj"></h3>
+                        </div>
+
 <table width="90%">
   <tr>
     <th>Tienda</th>
@@ -85,13 +105,31 @@
                             </td>
 
                             <td>
-                              <input type="text" placeholder="$0.00" name="precio{{$proveedor->id}}">
+                              <input 
+                                type="text" 
+                                class="paraPrecios" 
+                                placeholder="0.00" 
+                                min="200" 
+                                name="precio{{$proveedor->id}}" data-parsley-validation-threshold="1" 
+                                data-parsley-trigger="keyup" 
+                                data-parsley-type="number">
                             </td>
                           </tr>
                         
                     @endforeach
+
+
 				               
  </table>
+
+              <div class="row justify-content-end"> <!-- fila botones-->
+                <div class="col-4 mt-4">
+                  <input type="button" class="btn btn-outline-secondary" value="Cancelar">
+
+                  <input type="submit" class="btn btn-success" value="Continuar" />
+
+                </div>
+              </div>
  </form>   		
             	</div><!-- cierra fila uno campos-->
 
@@ -107,23 +145,6 @@
 </div>
 </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header" style="background: orange">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="ifa fa-window-close">X</span></button>
-                
-            </div>            
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <iframe frameborder="0" width="100%" height="600" 
-                src="" id="marco"></iframe>
-            </div>
-        </div>
-    </div>
-  </div>
 
 
 

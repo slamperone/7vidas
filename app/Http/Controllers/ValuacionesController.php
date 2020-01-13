@@ -65,6 +65,7 @@ class ValuacionesController extends Controller
         }
 
         $proveedores = Referencias::where('cat_id',$request->categoria)
+                        ->inRandomOrder()
                         ->get();
 
         $id = $registro->id;
@@ -122,7 +123,8 @@ class ValuacionesController extends Controller
 
        //echo $val[0]->categoria;
 
-        $proveedores = Referencias::where('cat_id',$val[0]->categoria)  
+        $proveedores = Referencias::where('cat_id',$val[0]->categoria)
+                    ->inRandomOrder() 
                     ->get();
 
         $refs = $proveedores;
