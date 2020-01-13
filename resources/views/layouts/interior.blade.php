@@ -21,6 +21,8 @@
     <link href="{{ asset('css/addons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/parsley.css') }}" rel="stylesheet">
+
 
     <link rel="shortcut icon" href="{{ asset('icon/icono.ico') }}" />
 </head>
@@ -39,5 +41,8 @@
 
     <script src="{{ asset('js/off-canvas.js') }}" defer></script>
     <script src="{{ asset('js/misc.js') }}" defer></script>
+    <script src="{{ asset('js/parsley.js') }}" defer></script>
+    <script src="{{ asset('js/i18n/es.js') }}" defer></script>
+
   </body>
 </html>    

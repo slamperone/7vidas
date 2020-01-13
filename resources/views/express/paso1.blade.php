@@ -35,7 +35,7 @@
 
             	</div>
 
-<form method="POST" action="{{ route('express2') }}">
+<form method="POST" action="{{ route('express2') }}" id="formStep1" data-parsley-validate>
                         @csrf
 
             	<div class="row my-4"> <!-- fila uno campos-->
@@ -103,14 +103,16 @@
 
 
 
-            	<div class="row mb-4"> <!-- fila tres campos-->
+            	<div class="row mb-4">
             		<div class="col-6">
             			 <label class="label font-weight-bold">Año de manufactura</label>
             			<select name="ano" id="ano" class="form-control form-control-lg" required="required">
             				<option value="">...</option>
             				@for ($i = 0; $i < 3; $i++)
-							    <option value="{{date('Y') -$i}}">{{date('Y') -$i}}</option>
-							@endfor
+                                          <option value="{{date('Y') -$i}}">
+                                          {{date('Y') -$i}}
+                                          </option>
+						@endfor
             			</select>
             		</div>
             		<div class="col-6">
@@ -185,5 +187,4 @@
 
 </div><!-- content -->
 </div><!-- main -->
-
 @endsection

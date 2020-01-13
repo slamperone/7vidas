@@ -29,7 +29,7 @@
             	<div class="row my-4"> <!-- fila uno campos-->
 
             		<div class="col-12">
-      <form method="POST" action="{{ route('express3') }}" id="formStep3" data-parsley-validate>
+  <form method="POST" action="{{ route('express3') }}" id="formStep2" data-parsley-validate >
                         @csrf
 <table width="90%">
   <tr>
