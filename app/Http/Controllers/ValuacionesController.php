@@ -98,14 +98,40 @@ class ValuacionesController extends Controller
             ->where('va.id', (int)$id)
             ->update($valores);
 
-if ($act) {
-    
-}else{
 
-}
+        $val = \DB::table('valuaciones as va')
+        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
+        ->join('categorias as cat', 'va.categoria', '=', 'cat.id')
+        ->join('subcategorias as sub', 'va.subcategoria', '=', 'sub.id')
+        ->join('estado as edo', 'va.estado', '=', 'edo.id')
+        ->select(
+            'va.modelo',
+            'va.subcategoria',
+            'ma.marca',
+            'cat.categoria',
+            'sub.nombre',
+            'va.version',
+            'va.valor',
+            'edo.estado',
+            'va.nuevo'
+        )
+        ->where('va.id', (int)$id)
+        ->get();
+
+        $estdoTxt = strtolower($val[0]->estado);
+
+        $fac = \DB::table('factores as fac')
+        ->where('fac.subcat_id', (int)$val[0]->subcategoria)
+        ->select('fac.'.$estdoTxt)
+        ->get();
 
 
-        var_dump($tupla);
+//dd($fac[0]);
+
+        $avaluo = $this->valuadora($val[0]->valor,$fac[0]->$estdoTxt,$val[0]->nuevo);
+
+
+        return view('express.paso3', compact('val','avaluo'));
 
     }
 
@@ -274,4 +300,22 @@ if ($act) {
 
         return $mediana;
     } 
+
+    /**
+        avalua el prodcuto
+    **/
+
+    function valuadora($val,$factor,$nuevo) {
+
+        $factor = $factor/100;
+
+        if ($nuevo == 1) {
+            $valor = $val * .7 * $factor;
+        }else{
+            $valor = $val  * $factor;
+        }
+
+        return $valor;
+
+    }
 }
