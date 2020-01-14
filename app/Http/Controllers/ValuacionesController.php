@@ -101,7 +101,7 @@ class ValuacionesController extends Controller
 if ($act) {
     
 }else{
-    
+
 }
 
 
@@ -211,9 +211,30 @@ if ($act) {
         ->select('va.id','va.modelo','va.etapa','va.created_at','ca.categoria','ma.marca','us.name')
         ->latest()
         ->paginate(15);
-        return view('express.historia', compact('valuaciones'));   
+        return view('valuaciones.historia', compact('valuaciones'));   
     }
 
+    /**
+     * Busca y muestra la data de las valuaciones hechas en el pasado y que 
+     * aún se pueden terminar
+     *
+     * 
+     */
+    public function pendientes()
+    {       
+        $valuaciones = \DB::table('valuaciones as va')
+        ->join('categorias as ca', 'va.categoria', '=', 'ca.id')
+        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
+        ->join('users as us', 'va.valuador', '=', 'us.id')
+        ->select('va.id','va.modelo','va.etapa','va.created_at','ca.categoria','ma.marca','us.name')
+        ->where('va.created_at', '>=', date('Y-m-d H:m:s', strtotime("-36 hours")))
+        ->latest()
+        ->paginate(15);
+
+
+
+        return view('valuaciones.pendientes', compact('valuaciones'));   
+    }
 
     /**
     Calcula la mediana estadistica

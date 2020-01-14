@@ -89,7 +89,7 @@
                                class="btn btn-success btn-fw" 
                                id="proov{{$proveedor->id}}"
                               onclick="
-                              window.open('<?= e(str_replace($pat, $valor, $proveedor->url)) ?>', '_blank', 'toolbar=no, scrollbars=yes, resizable=yes, top=500,left=500,width=800, height=800')
+                              window.open('<?= e(str_replace($pat, $valor, $proveedor->url)) ?>', '_blank', 'toolbar=no, scrollbars=yes, resizable=yes, top=500,left=500,width=1000, height=800')
 
                               /*getElementById('contieneProov{{$proveedor->id}}')
                               .style.padding= '20px 0';
