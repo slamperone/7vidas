@@ -8,6 +8,7 @@ use App\Referencias;
 use App\Valuaciones;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ValuacionesController extends Controller
 {
@@ -80,6 +81,32 @@ class ValuacionesController extends Controller
 
 
         return view('express.paso2', compact('val','refs'));
+    }
+
+    public function step3(Request $request,$id)
+    {
+
+        //primero calculo la mediana
+        $med = $this->mediana(Input::all());
+
+        $valores  = array(
+            'valor' => $med,
+            'etapa' => 2,
+             );
+
+        $act = \DB::table('valuaciones as va')
+            ->where('va.id', (int)$id)
+            ->update($valores);
+
+if ($act) {
+    
+}else{
+    
+}
+
+
+        var_dump($tupla);
+
     }
 
     /**
@@ -192,26 +219,38 @@ class ValuacionesController extends Controller
     Calcula la mediana estadistica
     **/
 
-    function mediana($arr) {
-        
-        sort($arr);
+    function mediana($campos) {
 
-        $cuantos = count($arr);
+        $filtrada = array();
+
+        foreach ($campos as $key) {
+            if (is_numeric($key) && $key >= 200) {
+                array_push($filtrada, $key);
+            }
+        }
+        
+        sort($filtrada);
+
+        //var_dump($filtrada);
+
+        $cuantos = count($filtrada);
 
         $central = floor(($cuantos-1)/2);
 
         if($cuantos % 2) {
 
-            $mediana = $arr[$central];
+            $mediana = $filtrada[$central];
 
             }else{
 
             
-            $arriba = $arr[$central+1];
+            $arriba = $filtrada[$central+1];
 
-            $mediana = (($arriba+$central)/2);
+
+
+            $mediana = (($arriba+$filtrada[$central])/2);
         }
 
-        return $median;
+        return $mediana;
     } 
 }

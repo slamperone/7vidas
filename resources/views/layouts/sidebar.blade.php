@@ -30,7 +30,7 @@
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Pendientes</a>
+                    <a class="nav-link" href="{{ route('pendientes') }}">Pendientes</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('historia') }}">Histórico</a>

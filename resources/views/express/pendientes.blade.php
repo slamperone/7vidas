@@ -24,7 +24,7 @@
                           <th> Etapa </th>
                           <th> Valuador </th>
                           <th> Fecha </th>
-                          <th> Estado </th>
+                          <th> Continuar </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -43,17 +43,7 @@
                               <td>{{date('d/m/Y h:s',strtotime($val->created_at))}}</td>
 
 
-                              <td>
-                                @if( strtotime($val->created_at) <= strtotime("-36 hours")  )
-
-                                {{"Cerrado"}}
-
-                                @else
-                                  {{"Abierto"}}
-
-                                @endif
-
-                              </td>
+                              <td><a href="{{route('express2Get',$val->id)}}">Continuar</a></td>
                             </tr>                              
                               @endforeach
 

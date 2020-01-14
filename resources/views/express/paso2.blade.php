@@ -30,7 +30,7 @@
             	<div class="row my-4"> <!-- fila uno campos-->
 
             		<div class="col-12">
-  <form method="POST" action="{{ route('express3') }}" id="formStep2">
+  <form method="POST" action="{{ route('express3',$val[0]->id) }}" id="formStep2">
                         @csrf
 
                         <div class="row">
