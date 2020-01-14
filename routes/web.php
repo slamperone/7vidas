@@ -27,8 +27,11 @@ Route::get('/valuacion-express-step-2/{id}', 'ValuacionesController@show')->name
 
 Route::post('/valuacion-express-step-3/{id}', 'ValuacionesController@step3')->name('express3');
 
+
 Route::get('/valuacion-historico', 'ValuacionesController@historia')->name('historia');
 
 Route::get('/abiertos', 'ValuacionesController@pendientes')->name('pendientes');
 
+
+Route::get('/ver-factores', 'FactoresController@index')->name('verFactores');
 
