@@ -1,11 +1,11 @@
-@extends('layouts.interior')
+@extends('layouts.cuestionarios')
 
 
 @section('content')
 
 @include('layouts.menu')
 
-@include('layouts.sidebar')         
+@include('layouts.sidebar')
 
 
 <div class="main-panel">
@@ -14,10 +14,14 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="page-title">Datos estadísticos interesantes van aqui</h4>
-                  <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+                    <h3 class="font-weight-semibold">Constructor de cuestionarios</h3>
 
-                  </div>
+
+
+
+<div id="build-wrap"></div>
+
+
                     
 
                   </div>
@@ -27,7 +31,6 @@
 
     </div>
 </div>     
-
 
 
 @endsection

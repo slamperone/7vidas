@@ -35,3 +35,8 @@ Route::get('/abiertos', 'ValuacionesController@pendientes')->name('pendientes');
 
 Route::get('/ver-factores', 'FactoresController@index')->name('verFactores');
 
+Route::get('/nuevo-cuestionario', function(){
+    return view('cuestionarios.add');
+	})->name('addQuest');
+
+Route::get('/todos-cuestionarios', 'CuestionariosController@index')->name('allQuest');
