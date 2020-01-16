@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\r;
 use Illuminate\Http\Request;
+use App\Cuestionarios;
 
 class CuestionariosController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +26,15 @@ class CuestionariosController extends Controller
      */
     public function index()
     {
-        //
+        //trae los cuestionarios 
+        $cues = \DB::table('cuestionarios as cu')
+        ->join('categorias as cat','cat.id' , '=', 'cu.id_cat')
+        ->select('cat.categoria','cu.preguntas')
+        ->get();
+
+        //$this->mediana($valores);    
+
+        return view('cuestionarios.todos', compact('cues'));
     }
 
     /**
@@ -41,10 +61,10 @@ class CuestionariosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(r $r)
+    public function show($id)
     {
         //
     }
@@ -52,10 +72,10 @@ class CuestionariosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(r $r)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +84,10 @@ class CuestionariosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, r $r)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +95,10 @@ class CuestionariosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(r $r)
+    public function destroy($id)
     {
         //
     }
