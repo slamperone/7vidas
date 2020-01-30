@@ -105,6 +105,7 @@ class ValuacionesController extends Controller
         ->join('subcategorias as sub', 'va.subcategoria', '=', 'sub.id')
         ->join('estado as edo', 'va.estado', '=', 'edo.id')
         ->select(
+            'va.id',
             'va.modelo',
             'va.subcategoria',
             'ma.marca',
@@ -132,6 +133,49 @@ class ValuacionesController extends Controller
 
 
         return view('express.paso3', compact('val','avaluo'));
+
+    }
+
+    public function step4($id)
+    {
+
+        $error = FALSE;
+
+        //obtengo la valuacion
+        $val = \DB::table('valuaciones as va')
+        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
+        ->join('categorias as cat', 'va.categoria', '=', 'cat.id')
+        ->join('subcategorias as sub', 'va.subcategoria', '=', 'sub.id')
+        ->join('estado as edo', 'va.estado', '=', 'edo.id')
+        ->select(
+            'va.modelo',
+            'va.subcategoria',
+            'ma.marca',
+            'cat.categoria',
+            'sub.nombre',
+            'va.version',
+            'va.valor',
+            'edo.estado',
+            'va.nuevo',
+            'va.categoria as cat_id'
+        )
+        ->where([
+            ['va.id', '=', (int)$id],
+            ['va.created_at', '>=', date('Y-m-d H:m:s', strtotime("-36 hours"))]
+        ])
+        ->get();
+
+//dd($val);
+        //si existe y sigue en tiempo, obtengo su cuestionario
+        if (isset($val)){
+                $quest = \DB::table('cuestionarios')
+                    ->where('cuestionarios.id_cat','=', $val[0]->cat_id)
+                    ->get();
+            }else{
+                $error = TRUE;
+            }
+
+        return view('express.paso4', compact('val','quest','error'));
 
     }
 
@@ -165,9 +209,6 @@ class ValuacionesController extends Controller
     public function show($id)
     {
         //
-
-
-
         $val = \DB::table('valuaciones as va')
         ->join('marcas as ma', 'va.marca', '=', 'ma.id')
         ->select('va.id','va.modelo','va.categoria','va.version','ma.marca')

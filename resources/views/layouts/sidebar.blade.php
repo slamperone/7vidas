@@ -22,12 +22,12 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <a class="nav-link" data-toggle="collapse" href="#vals" aria-expanded="false" aria-controls="vals">
                 <i class="menu-icon typcn typcn-coffee"></i>
                 <span class="menu-title">Valuaciones</span>
                 <i class="menu-arrow"></i>
               </a>
-              <div class="collapse" id="ui-basic">
+              <div class="collapse" id="vals">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('pendientes') }}">Pendientes</a>
@@ -44,12 +44,12 @@
 
 
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <a class="nav-link" data-toggle="collapse" href="#facs" aria-expanded="false" aria-controls="facs">
                 <i class="menu-icon typcn typcn-coffee"></i>
                 <span class="menu-title">Factores</span>
                 <i class="menu-arrow"></i>
               </a>
-              <div class="collapse" id="ui-basic">
+              <div class="collapse" id="facs">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('verFactores') }}">Consuta</a>
@@ -66,12 +66,12 @@
 
 
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <a class="nav-link" data-toggle="collapse" href="#cuest" aria-expanded="false" aria-controls="cuest">
                 <i class="menu-icon typcn typcn-coffee"></i>
                 <span class="menu-title">Cuestionarios</span>
                 <i class="menu-arrow"></i>
               </a>
-              <div class="collapse" id="ui-basic">
+              <div class="collapse" id="cuest">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('addQuest') }}">Nuevo</a>
