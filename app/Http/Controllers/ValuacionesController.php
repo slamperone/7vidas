@@ -167,12 +167,18 @@ class ValuacionesController extends Controller
 
 //dd($val);
         //si existe y sigue en tiempo, obtengo su cuestionario
-        if (isset($val)){
-                $quest = \DB::table('cuestionarios')
-                    ->where('cuestionarios.id_cat','=', $val[0]->cat_id)
-                    ->get();
+        if (!empty($val)){
+
+            $quest = \DB::table('cuestionarios')
+            ->where('cuestionarios.id_cat','=', $val[0]->cat_id)
+            ->get();
+
+                if (!empty($quest)) {
+                    $error = "No hay cuestionario para esa categoria";
+                }
+
             }else{
-                $error = TRUE;
+                $error = "Esta valuación expiró";
             }
 
         return view('express.paso4', compact('val','quest','error'));

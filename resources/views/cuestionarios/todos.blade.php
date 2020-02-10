@@ -19,7 +19,8 @@
                       <thead>
                         <tr>
                           <th> Categoria </th>
-                          <th> cuestionario </th>
+                          <th> Cuestionario </th>
+                          <th> Acccion </th>
 
                         </tr>
                       </thead>
@@ -29,11 +30,20 @@
                               <td>{{$tupla->categoria}}</td>
 
                               <td>
-                                <div style="width: 100%; border: 1px solid #000;">
+                                <div style="width: 100%; border: 1px solid #000; height: 115px; overflow-y: scroll;">
                                   <pre>
+                                
                                 {{$tupla->preguntas}}
                                   </pre>
                                 </div>
+                              </td>
+
+                              <td>
+
+                                <i class="mdi mdi-delete text-danger icon-md" onclick="delQuest({{$tupla->categoria}})"></i>
+                                <i class="mdi mdi-pencil text-warning icon-md"></i>
+
+
                               </td>
 
 

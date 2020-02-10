@@ -129,7 +129,15 @@ $("#formStep2").parsley({
     excluded: 'input[type=button], input[type=submit], input[type=reset]',
     inputs: 'input, textarea, select, input[type=hidden], :hidden',
 });
-    
+
+function delQuest(cual){
+    var respuesta = confirm("¿Desear borrar el cuestionario de "+cual+"?")
+             
+    if(respuesta)
+      alert("Usted aceptó.");
+    else
+      alert("Usted no aceptó."); 
+  }
 
 })(jQuery);
 

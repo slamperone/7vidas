@@ -7,6 +7,15 @@ use App\Factores;
 
 class FactoresController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     /**
      * Display a listing of the resource.
@@ -17,7 +26,7 @@ class FactoresController extends Controller
     {
         //trae todos los factores 
 
-         $val = \DB::table('Factores as fac')
+         $val = \DB::table('factores as fac')
         ->join('subcategorias as sub', 'fac.subcat_id', '=', 'sub.id')
         ->select('fac.bueno','fac.regular','fac.malo','sub.nombre')
         ->get();

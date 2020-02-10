@@ -32,6 +32,7 @@
     <script src="{{ asset('js/base.js') }}" defer></script>
     <script src="{{ asset('form-builder/js/form-builder.js') }}" defer></script>
     <script src="{{ asset('form-builder/js/demo.js') }}" defer></script>
+    <script src="{{ asset('js/misc.js') }}" defer></script>
     
 <script>
   
