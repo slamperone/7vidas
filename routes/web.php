@@ -25,7 +25,9 @@ Route::post('/valuacion-express-step-2', 'ValuacionesController@step2')->name('e
 
 Route::get('/valuacion-express-step-2/{id}', 'ValuacionesController@show')->name('express2Get');
 
-Route::post('/valuacion-express-step-3/{id}', 'ValuacionesController@step3')->name('express3');
+Route::post('/valuacion-express-step-3', 'ValuacionesController@step3')->name('express3');
+
+Route::post('/valuacion-express-step-31/{id}', 'ValuacionesController@step31')->name('express31');
 
 Route::get('/valuacion-express-step-4/{id}', 'ValuacionesController@step4')->name('express4');
 

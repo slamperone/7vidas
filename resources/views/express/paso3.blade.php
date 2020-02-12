@@ -13,7 +13,6 @@ setlocale(LC_TIME, 'es_ES.UTF-8');
 
  ?>
 
-
 <div class="main-panel">
     <div class="content-wrapper">
             <div class="row">
@@ -111,7 +110,7 @@ setlocale(LC_TIME, 'es_ES.UTF-8');
 
                   <div class="row justify-content-end"> <!-- fila botones-->
                 <div class="col-4 mt-4">
-                  <input type="button" class="btn btn-outline-secondary" value="Cancelar" onclick="location.href='{{ route('pendientes') }}'">
+                  <input type="button" class="btn btn-outline-secondary" value="Reintetar" onclick="window.history.go(-1); return false;">
 
                   <input type="submit" class="btn btn-success" value="Continuar" onclick="location.href='{{ route('express4',$val[0]->id) }}'"/>
 

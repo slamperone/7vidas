@@ -57,19 +57,27 @@ class ValuacionesController extends Controller
             'valuador'
         ]);
 
+
+        // en que id estoy
+        $id = $registro->id;
+
         if ($validator->fails()) {
             return redirect('valuacion-express')
                         ->withErrors($validator)
                         ->withInput();
         }else{
             $registro = Valuaciones::create($request->all());
+
+            $act = \DB::table('valuaciones as va')
+            ->where('va.id', (int)$id)
+            ->update(['etapa' => 2]);
         }
 
         $proveedores = Referencias::where('cat_id',$request->categoria)
                         ->inRandomOrder()
                         ->get();
 
-        $id = $registro->id;
+        
 
         $val = \DB::table('valuaciones as va')
         ->join('marcas as ma', 'va.marca', '=', 'ma.id')
@@ -83,21 +91,10 @@ class ValuacionesController extends Controller
         return view('express.paso2', compact('val','refs'));
     }
 
-    public function step3(Request $request,$id)
+    public function step3(Request $request)
     {
-
-        //primero calculo la mediana
-        $med = $this->mediana(Input::all());
-
-        $valores  = array(
-            'valor' => $med,
-            'etapa' => 2,
-             );
-
-        $act = \DB::table('valuaciones as va')
-            ->where('va.id', (int)$id)
-            ->update($valores);
-
+        $id = $request->input('id');
+        $avaluo = $request->input('cuanto');
 
         $val = \DB::table('valuaciones as va')
         ->join('marcas as ma', 'va.marca', '=', 'ma.id')
@@ -117,7 +114,52 @@ class ValuacionesController extends Controller
             'va.nuevo'
         )
         ->where('va.id', (int)$id)
-        ->get();
+        ->get(); 
+
+
+
+
+#dd($request);
+        return view('express.paso3', compact('val','avaluo'));
+
+    }
+
+
+    public function step31(Request $request,$id)
+    {
+        //primero calculo la mediana
+        $med = $this->mediana(Input::all());
+
+        $valores  = array(
+            'valor' => $med,
+            'etapa' => 3,
+             );
+
+
+        $act = \DB::table('valuaciones as va')
+        ->where('va.id', (int)$id)
+        ->update($valores);
+
+        $val = \DB::table('valuaciones as va')
+        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
+        ->join('categorias as cat', 'va.categoria', '=', 'cat.id')
+        ->join('subcategorias as sub', 'va.subcategoria', '=', 'sub.id')
+        ->join('estado as edo', 'va.estado', '=', 'edo.id')
+        ->select(
+            'va.id',
+            'va.modelo',
+            'va.subcategoria',
+            'ma.marca',
+            'cat.categoria',
+            'sub.nombre',
+            'va.version',
+            'va.valor',
+            'edo.estado',
+            'va.nuevo'
+        )
+        ->where('va.id', (int)$id)
+        ->get();    
+        
 
         $estdoTxt = strtolower($val[0]->estado);
 
@@ -127,12 +169,11 @@ class ValuacionesController extends Controller
         ->get();
 
 
-//dd($fac[0]);
-
         $avaluo = $this->valuadora($val[0]->valor,$fac[0]->$estdoTxt,$val[0]->nuevo);
 
 
-        return view('express.paso3', compact('val','avaluo'));
+        return view('express.paso31', compact('val','avaluo'));
+
 
     }
 
