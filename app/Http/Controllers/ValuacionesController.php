@@ -58,8 +58,11 @@ class ValuacionesController extends Controller
         ]);
 
 
+<<<<<<< HEAD
        
 
+=======
+>>>>>>> bef865c31a9b4c81833ff69347d1bead34276d42
         if ($validator->fails()) {
             return redirect('valuacion-express')
                         ->withErrors($validator)
@@ -70,8 +73,17 @@ class ValuacionesController extends Controller
         	$id = $registro->id;
 
             $act = \DB::table('valuaciones as va')
+<<<<<<< HEAD
 		            ->where('va.id', (int)$id)
 		            ->update(['etapa' => 2]);
+=======
+            ->where('va.id', (int)$id)
+            ->update(['etapa' => 2]);
+
+            // en que id estoy
+            $id = $registro->id;
+        }
+>>>>>>> bef865c31a9b4c81833ff69347d1bead34276d42
 
         	$proveedores = Referencias::where('cat_id',$request->categoria)
                         ->inRandomOrder()
