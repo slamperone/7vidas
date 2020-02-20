@@ -58,11 +58,6 @@ class ValuacionesController extends Controller
         ]);
 
 
-<<<<<<< HEAD
-       
-
-=======
->>>>>>> bef865c31a9b4c81833ff69347d1bead34276d42
         if ($validator->fails()) {
             return redirect('valuacion-express')
                         ->withErrors($validator)
@@ -73,17 +68,13 @@ class ValuacionesController extends Controller
         	$id = $registro->id;
 
             $act = \DB::table('valuaciones as va')
-<<<<<<< HEAD
 		            ->where('va.id', (int)$id)
 		            ->update(['etapa' => 2]);
-=======
-            ->where('va.id', (int)$id)
-            ->update(['etapa' => 2]);
 
             // en que id estoy
             $id = $registro->id;
-        }
->>>>>>> bef865c31a9b4c81833ff69347d1bead34276d42
+        
+
 
         	$proveedores = Referencias::where('cat_id',$request->categoria)
                         ->inRandomOrder()
@@ -108,7 +99,13 @@ class ValuacionesController extends Controller
     public function step3(Request $request)
     {
         $id = $request->input('id');
-        $avaluo = $request->input('cuanto');
+        
+        $precios = array(
+        	'tr' => $request->input('tradicional'),
+        	'pl' => $request->input('plus'),
+        	'cm' => $request->input('compra'), 
+        );
+
 
         $val = \DB::table('valuaciones as va')
 	        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
@@ -134,7 +131,7 @@ class ValuacionesController extends Controller
 
 
 #dd($request);
-        return view('express.paso3', compact('val','avaluo'));
+        return view('express.paso3', compact('val','precios'));
 
     }
 
