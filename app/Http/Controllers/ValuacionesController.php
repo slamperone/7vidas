@@ -58,8 +58,7 @@ class ValuacionesController extends Controller
         ]);
 
 
-        // en que id estoy
-        $id = $registro->id;
+       
 
         if ($validator->fails()) {
             return redirect('valuacion-express')
@@ -67,28 +66,31 @@ class ValuacionesController extends Controller
                         ->withInput();
         }else{
             $registro = Valuaciones::create($request->all());
+            // en que id estoy
+        	$id = $registro->id;
 
             $act = \DB::table('valuaciones as va')
-            ->where('va.id', (int)$id)
-            ->update(['etapa' => 2]);
-        }
+		            ->where('va.id', (int)$id)
+		            ->update(['etapa' => 2]);
 
-        $proveedores = Referencias::where('cat_id',$request->categoria)
+        	$proveedores = Referencias::where('cat_id',$request->categoria)
                         ->inRandomOrder()
                         ->get();
 
         
 
-        $val = \DB::table('valuaciones as va')
-        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
-        ->select('va.id','va.modelo','va.categoria','va.version','ma.marca')
-        ->where('va.id', (int)$id)
-        ->paginate(15);
-        $refs = $proveedores;
+	        $val = \DB::table('valuaciones as va')
+	        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
+	        ->select('va.id','va.modelo','va.categoria','va.version','ma.marca')
+	        ->where('va.id', (int)$id)
+	        ->paginate(15);
+
+	        $refs = $proveedores;
 
 
 
-        return view('express.paso2', compact('val','refs'));
+        	return view('express.paso2', compact('val','refs'));
+    	}
     }
 
     public function step3(Request $request)
@@ -97,24 +99,24 @@ class ValuacionesController extends Controller
         $avaluo = $request->input('cuanto');
 
         $val = \DB::table('valuaciones as va')
-        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
-        ->join('categorias as cat', 'va.categoria', '=', 'cat.id')
-        ->join('subcategorias as sub', 'va.subcategoria', '=', 'sub.id')
-        ->join('estado as edo', 'va.estado', '=', 'edo.id')
-        ->select(
-            'va.id',
-            'va.modelo',
-            'va.subcategoria',
-            'ma.marca',
-            'cat.categoria',
-            'sub.nombre',
-            'va.version',
-            'va.valor',
-            'edo.estado',
-            'va.nuevo'
-        )
-        ->where('va.id', (int)$id)
-        ->get(); 
+	        ->join('marcas as ma', 'va.marca', '=', 'ma.id')
+	        ->join('categorias as cat', 'va.categoria', '=', 'cat.id')
+	        ->join('subcategorias as sub', 'va.subcategoria', '=', 'sub.id')
+	        ->join('estado as edo', 'va.estado', '=', 'edo.id')
+	        ->select(
+	            'va.id',
+	            'va.modelo',
+	            'va.subcategoria',
+	            'ma.marca',
+	            'cat.categoria',
+	            'sub.nombre',
+	            'va.version',
+	            'va.valor',
+	            'edo.estado',
+	            'va.nuevo'
+	        )
+	        ->where('va.id', (int)$id)
+	        ->get(); 
 
 
 

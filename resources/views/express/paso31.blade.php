@@ -20,39 +20,69 @@
             <div class="card-body">
 
             	<div class="row">
-            		<h3 class="font-weight-semibold">Personalización de oferta</h3>
+            		<h3 class="font-weight-semibold">Personalización de preoferta</h3>
                 <hr />
             	</div>
               <div class="row">
-                <p>El avalúo máximo para este producto es: $ {{number_format($avaluo,2,'.',',')}} <br /></p>
+                <p>El avalúo máximo para este producto es:  
+                  <span class="font-weight-medium text-primary">$ {{number_format($avaluo,2,'.',',')}} </span><br />
 
-                <p>¿Cuanto le ofrecerás al cliente?</p>    
+                ¿Cuanto le ofrecerás al cliente?</p>    
 
             </div>
 
+              <form method="POST" action="{{ route('express3') }}" id="formStep2">
+                          @csrf
+                  <input 
+                          type="hidden" 
+                          value="{{$val[0]->id}}" 
+                          name="id"  
+                          />
+            <div class="row">
 
-                  <form method="POST" action="{{ route('express3') }}" id="formStep2">
-                        @csrf
+                  <div class="col-8">
+                    <label class="label font-weight-bold">Empeño tradicional</label>
+                              <input 
+                                type="text" 
+                                value="{{$avaluo}}" 
+                                name="cuanto"  
+                                max="{{$avaluo}}"
+                                data-parsley-trigger="keyup"
+                                data-parsley-error-message="No puedes ofecer mas que el avalúo"
+                                class="form-control" 
+                                data-parsley-type="number"
+                                required>
+                  </div>
 
-                    <input 
-                        type="hidden" 
-                        value="{{$val[0]->id}}" 
-                        name="id"  
-                        >
+                  <div class="col-8">
+                    <label class="label font-weight-bold">Empeño Plus</label>
+                              <input 
+                                type="text" 
+                                value="{{$avaluo * 1.1}}" 
+                                name="cuanto"  
+                                max="{{$avaluo}}"
+                                data-parsley-trigger="keyup"
+                                data-parsley-error-message="No puedes ofecer mas que el avalúo"
+                                class="form-control"
+                                data-parsley-type="number"
+                                required>
+                  </div>
 
-                   <div class="row">
-                          <div class="col-12">
-                            <input 
-                              type="text" 
-                              value="{{$avaluo}}" 
-                              name="cuanto"  
-                              max="{{$avaluo}}"
-                              data-parsley-trigger="keyup"
-                              data-parsley-error-message="No puedes ofecer mas que el avalúo" 
-                              data-parsley-type="number"
-                              required>
-                          </div>
-                    </div>
+                  <div class="col-8">
+                    <label class="label font-weight-bold">Compra</label>
+                              <input 
+                                type="text" 
+                                value="{{$avaluo * 1.15}}" 
+                                name="cuanto"  
+                                max="{{$avaluo}}"
+                                data-parsley-trigger="keyup"
+                                data-parsley-error-message="No puedes ofecer mas que el avalúo"
+                                class="form-control" 
+                                data-parsley-type="number"
+                                required>
+                  </div>
+
+            </div>
                     
 
                 <div class="row justify-content-end"> <!-- fila botones-->
@@ -65,7 +95,10 @@
               </div>        
 
 
-                  </form>  
+                  </form> 
+
+
+           </div>        
         </div>
     </div>
 </div>
